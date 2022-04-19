@@ -11,22 +11,18 @@ function App() {
   const bannerNews = news_banner_data;
   return (
     <SafeAreaView>
-        <ScrollView horizontal 
-        style={imageStyle.container} >
-          {news_banner_data.map(bannerNews => (<Image source={{uri:bannerNews.imageUrl}} />))}
-        </ScrollView>
-     
-      <ScrollView>
-
-        <View>
-
-          <FlatList
-            data={news_data}
-            renderItem={renderNews}
-          />
-
-        </View>
-      </ScrollView>
+      <View>
+        <FlatList
+          ListHeaderComponent={() => (
+            <ScrollView horizontal
+               >
+              {news_banner_data.map(bannerNews => (<Image style={imageStyle.container} source={{ uri: bannerNews.imageUrl }} />))}
+            </ScrollView>
+          )}
+          data={news_data}
+          renderItem={renderNews}
+        />
+    </View>
     </SafeAreaView>
   );
 
@@ -35,10 +31,10 @@ function App() {
 
 const imageStyle = StyleSheet.create(
   {
-    container:{
+    container: {
 
-        height:Dimensions.get('window').height /4,
-        width : Dimensions.get('window').width /2,
+      height: Dimensions.get('window').height / 4,
+      width: Dimensions.get('window').width / 2,
     },
 
 
